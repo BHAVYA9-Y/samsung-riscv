@@ -4,7 +4,7 @@
 <br>
 <b>College:</b> Dayananda Sagar College Of Engineering
 <br>
-<b>Email:</b> <a href="demogorgan6627@gmail.com">demogorgan6627@gmail.com</a>
+<b>Email:</b> <a href="mailto:demogorgan6627@gmail.com">demogorgan6627@gmail.com</a>
 <br>
 <b>GitHub Profile:</b> <a href="https://github.com/BHAVYA9-Y">BHAVYA9-Y</a>
 <hr>
