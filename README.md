@@ -124,7 +124,7 @@ gcc square.c
 <pre><code>#inlcude&ltstdio.h&gt
 int main(){
                int num = 250;
-               int square=num*num
+               int square=num*num;
                 printf("The square of %d is %d\n",n,square);
         return 0;
                        }
