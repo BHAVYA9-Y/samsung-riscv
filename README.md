@@ -456,6 +456,6 @@ spike -d pk square.o</code></p></pre>
 
 <!-- end of Task 3 -->
 
-       
+<hr>       
 </body>
 </html>
