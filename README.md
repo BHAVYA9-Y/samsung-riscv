@@ -226,7 +226,7 @@ spike -d pk square.o</code></p></pre>
 </p>
 <p>
 <b>Machine code:</b> <br>
-  <pre><p><code> Binary:0000000000001111011000110111 <br> Hexadecimal is *000F637* </code></p></pre>
+  <pre><p><code> Binary:0000000000001111011000110111 <br> Hexadecimal:000F637 </code></p></pre>
 </p>
 <b>2.Instruction code for lui a0,0x21</b> <br>
 <img src="![Image](https://github.com/user-attachments/assets/8ee106e0-abc3-4a16-836b-a12ab9e41886)">
