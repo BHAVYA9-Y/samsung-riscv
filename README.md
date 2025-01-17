@@ -188,7 +188,143 @@ spike -d pk square.o</code></p></pre>
   <p><summary>
     <b>Task 3:</b> 15 unique instructions are determined in the riscv-objdump of code,As it gives exact 32-bit instruction code in their respective instruction type formats.
   </summary></p>
+<!-- Task 3 -->   
+<details>
+	<p><summary>
+		RISC-V Instruction Formats
+	</summary></p>
+<!-- Explaination -->
+	
+<h2>Instruction Types and Fields</h2>
 
+<p> The RISC-V instructions are categorized into types based on their filed organization.Each type has specific fields like opcode,funct3,funct4,immediate values and register numbers. The types include:</p>
+
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; R-Type:</b> Register Type <br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; I-Type:</b> Immediate Type <br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; S-Type:</b> Store Type <br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; B-Type:</b> Branch Type <br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; U-Type:</b> Upper Immediate Type <br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; J-Type:</b> Jump Type <br>
+
+<!-- R-Type -->
+
+<h3>RISCV R-Type Instructions</h3>
+
+<p>R-type instructions are used for operations that involve only registers. These instructions typically perform arithmetic, logical, and shift operations.</p>
+
+<b>Format:</b><br>
+
+<pre>
++----------------------------------------------------------------------------------------------------------------------------------+
+  funct7[31:25](7-bits) | rs2[24:20](5-bits) | rs1[19:15](5-bits) | funct3[14:12](3-bits) | rd[11:7](5-bits) | opcode[6:0](7-bits)
++----------------------------------------------------------------------------------------------------------------------------------+
+</pre>
+
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; funct7:</b> Further specifies the operation.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; rs2:</b> Second source register.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; rs1:</b> First source register.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; funct3:</b> Further specifies the operation.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; rd:</b> Destination register.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; opcode:</b> Specifies the operation.<br>
+
+<!-- I-Type -->
+
+<h3>RISCV I-Type Instructions</h3>
+
+<p>I-Type instructions cover various operations, including immediate arithmetic, load operations, and certain control flow instructions.</p>
+
+<b>Format:</b><br>
+
+<pre>
++----------------------------------------------------------------------------------------------------------+
+  imm[31:20](12-bits) | rs1[19:15](5-bits) | funct3[14:12](3-bits) | rd[11:7](5-bits) | opcode[6:0](7-bits)
++----------------------------------------------------------------------------------------------------------+
+</pre>
+
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; imm:</b> Immediate Value.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; rs1:</b> First source register.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; funct3:</b> Further specifies the operation.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; rd:</b> Destination register.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; opcode:</b> Specifies the operation.<br>
+
+<!-- S-Type -->
+
+<h3>RISCV S-Type Instructions</h3>
+
+<p>S-type instructions are essential for accessing and manipulating data in memory.Used to store data from a register to memory.</p>
+
+<b>Format:</b><br>
+
+<pre>
++--------------------------------------------------------------------------------------------------------------------------------------------+
+  imm[31:25](11:5)(7-bits) | rs2[24:20](5-bits) | rs1[19:15](5-bits) | funct3[14:12](3-bits) | imm[11:7](4:0)(5-bits) | opcode[6:0](7-bits)
++--------------------------------------------------------------------------------------------------------------------------------------------+
+</pre>
+
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; imm:</b> Immediate Value( split into imm[11:5] and imm[4:0]).<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; rs2:</b> Second source register.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; rs1:</b> First source register.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; funct3:</b> Further specifies the operation.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; opcode:</b> Specifies the operation.<br>
+
+<!-- B-Type -->
+      
+<h3>RISCV B-Type Instructions</h3>
+
+<p>B-type instructions are crucial for implementing control flow in programs, enabling conditional execution of code blocks.Used for conditional branches, which alter the program flow based on a comparison of register values.</p>
+
+<b>Format:</b><br>
+
+<pre>
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  imm[31](12)(1-bit) | imm[30:25](10:5)(6-bits) | rs2[24:20](5-bits) | rs1[19:15](5-bits) | funct3[14:12](3-bits) | imm[11:8](4:1)(4-bits) | imm[7](11)(1-bit) | opcode[6:0](7-bits)
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</pre>
+
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; imm:</b> Immediate Value( split into imm[12], imm[10:5], imm[4:1] and imm[11]).<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; rs2:</b> Second source register.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; rs1:</b> First source register.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; funct3:</b> Further specifies the operation.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; opcode:</b> Specifies the operation.<br>
+
+<!-- U-Type -->
+
+<h3>RISCV U-Type Instructions</h3>
+
+<p>U-Type instructions are used for operations like loading upper immediate (LUI) and adding upper immediate to PC (AUIPC).</p>
+
+<b>Format:</b><br>
+
+<pre>
++----------------------------------------------------------------------------------------------------------+
+                  imm[31:12](20-bits)                |    rd[11:7](5-bits)      |     opcode[6:0](7-bits)
++----------------------------------------------------------------------------------------------------------+
+</pre>
+
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; imm:</b> Upper 20 bits of the immediate value.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; rd:</b> Destination register.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; opcode:</b> Specifies the operation.<br>
+
+<!-- J-Type -->
+      
+<h3>RISCV J-Type Instructions</h3>
+
+<p>J-type instructions in RISC-V are primarily used for unconditional jumps to specific target addresses within the program.They play a crucial role in controlling the flow of execution by transferring control to a different part of the code.</p>
+
+<b>Format:</b><br>
+
+<pre>
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  imm[31](20)(1-bit) | imm[30:21](10:1)(10-bits) | imm[20](11)(1-bit) | imm[19:12](19:12)(8-bits) | rd[11:7](5-bits) | opcode[6:0](7-bits)
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</pre>
+
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; imm:</b> Immediate Value( split into imm[20], imm[10:1], imm[11] and imm[19:12]).<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; rd:</b> Destination register.<br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; opcode:</b> Specifies the operation.<br>
+</details>
+<details>
+    <summary>Machine Codes for Objectdump.</summary>
 <b>Debugging code to get objdump instructions</b>
 <pre><p><code>riscv64-unknown-elf-objdump -d square.o</code></p></pre>
 <b>Ofast assembly output</b>
@@ -213,7 +349,7 @@ spike -d pk square.o</code></p></pre>
 
 <h3><b>32 bit instruction format for 15 unique RISC-V instructions:</b></h3>
 <br>
-<b>1.Instruction code for lui a2,0xf </b>
+<b>1.Instruction code for lui a2,0xf </b><br>
 <br>
 <img src="https://github.com/user-attachments/assets/bff39d8b-0317-4a2c-905f-05724cef98b0">
 <br><br>
@@ -228,7 +364,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code:</b> <br>
   <pre><p><code> Binary:0000000000001111011000110111 <br> Hexadecimal:000F637 </code></p></pre>
 </p>
-<b>2.Instruction code for lui a0,0x21</b> <br>
+<b>2.Instruction code for lui a0,0x21</b> <br><br>
 <img src="https://github.com/user-attachments/assets/8ee106e0-abc3-4a16-836b-a12ab9e41886">
 <br><br>
 <p>
@@ -242,7 +378,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code:</b> <br>
    <pre><p><code> Binary: 000000100001000000000000010100110111 <br> Hexadecimal: 0x21000537 </code></p></pre>
 </p>
-<b>3.Instruction code for addi sp,sp,-16</b> <br>
+<b>3.Instruction code for addi sp,sp,-16</b> <br><br>
 <img src="https://github.com/user-attachments/assets/098fe60b-6899-4cac-b9f2-94ade3154be8">
 <br><br>
 <p>
@@ -258,7 +394,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:111111111000 00010 000 00010 001011 <br> Hexadecimal:0xfff08093</code></p></pre>
 </p>
-<b>4.Instruction code for addi a2,a2,1060</b> <br>
+<b>4.Instruction code for addi a2,a2,1060</b> <br><br>
 <img src="https://github.com/user-attachments/assets/7d8759ab-d47a-44ce-919c-3c8a36de29e1">
 <br><br>
 <p>
@@ -274,7 +410,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:000001000001 01010 000 01010 0010011 <br> Hexadecimal:0x041 0x2A 0x0 0x2A 0x13</code></p></pre>
 </p>
-<b>5.Instruction code for li a1,250 </b> <br>
+<b>5.Instruction code for li a1,250 </b> <br><br>
 <img src="https://github.com/user-attachments/assets/de9d30ce-2ee5-4a8b-b34f-e1ec2060ccff">
 <br><br>
 <p>
@@ -291,7 +427,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:000000111110 00000 000 01011 0010011 <br> Hexadecimal:0x07F00513</code></p></pre>
 </p>
-<b>6.Instruction code for addi a0,a0,384</b> <br>
+<b>6.Instruction code for addi a0,a0,384</b> <br><br>
 <img src="https://github.com/user-attachments/assets/d465d684-14df-4a08-91aa-3c85d0ed94e1">
 <br><br>
 <p>
@@ -307,7 +443,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:000000001100 01010 000 01010 0010011 <br> Hexadecimal:00C 2A 0 2A 13</code></p></pre>
 </p>
-<b>7.Instruction code for sd ra,8(sp) </b> <br>
+<b>7.Instruction code for sd ra,8(sp) </b> <br><br>
 <img src="https://github.com/user-attachments/assets/b1e226c5-4c56-4772-b9d0-423112eb6b56">
 <br><br>
 <p>
@@ -323,7 +459,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:000000001000 00010 011 00001 0100011 <br> Hexadecimal:0x00826146</code></p></pre>
 </p>
-<b>8.Instruction code for jal ra,1040c </b> <br>
+<b>8.Instruction code for jal ra,1040c </b> <br><br>
 <img src="https://github.com/user-attachments/assets/36b70685-a5f2-4c9f-92d3-59abe405c5b9">
 <br><br>
 <p>
@@ -341,7 +477,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:000000110011 1 0000111100 00001 1101111 <br> Hexadecimal:1B 1 FC 1 DF</code></p></pre>
 </p>
-<b>9.Instruction code for ld ra,8(sp)</b><br>
+<b>9.Instruction code for ld ra,8(sp)</b><br><br>
 <img src="https://github.com/user-attachments/assets/c845e032-bc19-4988-b219-ee029af73100">
 <br><br>
 <p>
@@ -357,7 +493,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:0000000001000 00010 011 00001 0000011 <br> Hexadecimal:0x00810203</code></p></pre>
 </p>
-<b>10.Instruction code for li a0,0 </b> <br>
+<b>10.Instruction code for li a0,0 </b> <br><br>
 <img src="https://github.com/user-attachments/assets/d08beabd-e9eb-48bb-bc80-6788a8b59cd9"> 
 <br><br>
 <p>
@@ -373,7 +509,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:000000000000 00000 000 01010 0010011 <br> Hexadecimal:0x00000513</code></p></pre>
 </p>
-<b>11.Instruction code for addi sp,sp,16</b><br>
+<b>11.Instruction code for addi sp,sp,16</b><br><br>
 <img src="https://github.com/user-attachments/assets/caa587dd-1bdb-42fe-b612-b843281797eb">
 <br><br>
 <p>
@@ -389,7 +525,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:000000001000 00010 000 00010 0010011 <br> Hexadecimal:0x01008093</code></p></pre>
 </p>
-<b>12.Instruction code for ret</b>
+<b>12.Instruction code for ret</b><br>
 <img src="https://github.com/user-attachments/assets/aa58be22-f30a-416a-a859-44fe45e61e51">
 <br><br>
 <p>
@@ -406,7 +542,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:000000000000 00001 000 00000 1100111<br> Hexadecimal:0x00008067</code></p></pre>
 </p>
-<b>13.Instruction code for auipc a5,0xffff0</b> <br>
+<b>13.Instruction code for auipc a5,0xffff0</b> <br><br>
 <img src="https://github.com/user-attachments/assets/f26e0cc3-fb96-4e1d-b02b-25bc59d2486a">
 <br><br>
 <p>
@@ -420,7 +556,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:00001111111111111111 01111 0010111<br> Hexadecimal:FFFF 17 17</code></p></pre>
 </p>
-<b>14.Instruction code for addi a5,a5,-224 </b> <br>
+<b>14.Instruction code for addi a5,a5,-224 </b> <br><br>
 <img src="https://github.com/user-attachments/assets/fc8d8fcb-015d-4d5b-ac13-2288f78ec6d0">
 <br><br>
 <p>
@@ -436,7 +572,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:1111111111100000 01111 000 01111 001011<br> Hexadecimal:FFE0 1F 0 1F 2B</code></p></pre>
 </p>
-<b>15.Instruction code for beqz a5,100f8</b><br>
+<b>15.Instruction code for beqz a5,100f8</b><br><br>
 <img src="https://github.com/user-attachments/assets/f1fb17c8-f931-4de7-b4b1-fb691bcb2cae">
 <br><br>
 <p>
@@ -453,7 +589,7 @@ spike -d pk square.o</code></p></pre>
    <pre><p><code> Binary:0000000111100000 01111 000 00000 1100011 <br> Hexadecimal:0x00F0780C3</code></p></pre>
 </p>
 </details>
-
+</details>
 <!-- end of Task 3 -->
 
 <hr>       
