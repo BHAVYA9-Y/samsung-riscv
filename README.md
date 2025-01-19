@@ -643,7 +643,6 @@ spike -d pk square.o</code></p></pre>
     </details>
     <hr>
     
-    <!--End of Task 4-->
 
  
 </body>
