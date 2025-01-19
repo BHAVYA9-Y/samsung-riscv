@@ -592,6 +592,6 @@ spike -d pk square.o</code></p></pre>
 </details>
 <!-- end of Task 3 -->
 
-<hr>       
+ 
 </body>
 </html>
