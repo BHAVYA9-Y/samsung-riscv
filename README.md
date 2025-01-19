@@ -588,6 +588,7 @@ spike -d pk square.o</code></p></pre>
 <b>Machine code</b> <br>
    <pre><p><code> Binary:0000000111100000 01111 000 00000 1100011 <br> Hexadecimal:0x00F0780C3</code></p></pre>
 </p>
+<hr>
 </details>
 </details>
 <!-- end of Task 3 -->
@@ -638,6 +639,7 @@ spike -d pk square.o</code></p></pre>
     <br><br><b><i>Instruction 15:</i></b><pre> SRL R16, R4, R2</pre><br>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2015-%20SRL%20R16%2CR4%2CR2.png" alt="SRL R16, R4, R2">
     <br><br>
+	<hr>
     </details>
     <!--End of Task 4-->
 
