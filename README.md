@@ -591,6 +591,55 @@ spike -d pk square.o</code></p></pre>
 </details>
 </details>
 <!-- end of Task 3 -->
+<!-- Task 4 -->
+<details><summary><b>Task 4: </b>By using RISC-V Core: Verilog netlist and Testbench, perform an experiment of Functional Simulation using GTKWave and Observe the waveforms.</summary>
+    <h4>Installing iverilog and GTKWave in Ubuntu:</h4>
+    <pre><code>sudo apt install iverilog gtkwave</code></pre>
+    <h3>Simulate and run the verilog code</h3>
+    <pre><code>iverilog -o iiitb_rv32i iiitb_rv32i.v iiitb_rv32i_tb.v
+    ./iiitb_rv32i
+    gtkwave iiitb_rv32i.vcd</code></pre>
+    <h4>GTKWave Window:</h4><br>
+    <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/GTKWave%20Window.png" alt="GTKWave Window">
+    <br><br>
+    <h4>Hardcoded Instructions:</h4><br>
+    <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/All%20instructions.jpg" alt="Hardcoded ISA">
+    <br>
+    <h3>Ouput Waveforms:</h3>
+    <p>The output waveforms showing the instructions performed in a 5-stage pipelined architecture</p>
+    <b><i>Instruction 1:</i></b><pre> ADD R6, R2, R1</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%201-%20ADD%20R6%2CR2%2CR1.png" alt="ADD R6, R2, R1">
+    <br><br><b><i>Instruction 2:</i></b><pre> SUB R7, R1, R2</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%202-%20SUB%20R7%2CR1%2CR2.png" alt="SUB R7, R1, R2">
+    <br><br><b><i>Instruction 3:</i></b><pre> AND R8, R1, R3</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%203-%20AND%20R8%2CR1%2CR3.png" alt="AND R8, R1, R3">
+    <br><br><b><i>Instruction 4:</i></b><pre> OR R9, R2, R5</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%204-%20OR%20R9%2CR2%2CR5.png" alt="OR R9, R2, R5">
+    <br><br><b><i>Instruction 5:</i></b><pre> XOR R10, R1, R4</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%205-XOR%20R10%2CR1%2CR4.png" alt="XOR R10, R1, R4">
+    <br><br><b><i>Instruction 6:</i></b><pre> SLT R11, R2, R4</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%206-%20SLT%20R11%2CR2%2CR4.png" alt="SLT R11, R2, R4">
+    <br><br><b><i>Instruction 7:</i></b><pre> ADDI R12, R4, 5</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%207-%20ADDI%20R12%2CR4%2C5.png" alt="ADDI R12, R4, 5">
+    <br><br><b><i>Instruction 8:</i></b><pre> SW R3, R1, 2</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%208-%20SW%20R3%2CR1%2C2.png" alt="SW R3, R1, 2">
+    <br><br><b><i>Instruction 9:</i></b><pre> LW R13, R1, 2</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%209-%20LW%20R13%2CR1%2C2.png" alt="LW R13, R1, 2">
+    <br><br><b><i>Instruction 10:</i></b><pre> BEQ R0, R0, 15</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2010-BEQ%20R0%2CR0%2C15.png" alt="BEQ R0, R0, 15">
+    <br><br><b><i>Instruction 11:</i></b><pre> ADD R14, R2 R2</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2011-ADD%20R14%2CR2%2CR2.png">
+    <br><br><b><i>Instruction 12:</i></b><pre> BNE R0, R1, 20</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2012-%20BNE%20R0%2CR1%2C20.png" alt="BNE R0, R1, 20">
+    <br><br><b><i>Instruction 13:</i></b><pre> ADDI R12, R4, 5</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2013-ADDI%20R12%2CR4%2C5.png" alt="ADDI R12, R4, 5">
+    <br><br><b><i>Instruction 14:</i></b><pre> SLL R15, R1, R2</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2014-%20SLL%20R15%2CR1%2CR2.png" alt="SLL R15, R1, R2">
+    <br><br><b><i>Instruction 15:</i></b><pre> SRL R16, R4, R2</pre><br>
+        <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2015-%20SRL%20R16%2CR4%2CR2.png" alt="SRL R16, R4, R2">
+    <br><br>
+    </details>
+    <!--End of Task 4-->
 
  
 </body>
