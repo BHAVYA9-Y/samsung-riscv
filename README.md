@@ -1,6 +1,4 @@
 <h1>samsung-riscv</h1>
-<html lang="en">
-<body>
 <h2>Basic Details</h2>
 <b>Name:</b> Bhavya Y
 <br>
@@ -661,5 +659,4 @@ gtkwave iiitb_rv32i.vcd</code></pre>
     <br><br>
     </details>
     <hr>
-</body>
-</html>
+
