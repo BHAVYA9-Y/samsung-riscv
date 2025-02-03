@@ -661,7 +661,7 @@ gtkwave iiitb_rv32i.vcd</code></pre>
     <hr>
 <!-- end of Task 4 -->
 		<!-- Task 5 -->
-<details><summary><b>This Task is to implement any digital circuits using VSDSquadron Mini and check whether the building and uploading of C program file on RISCV processor works </b></summary>
+<details><summary>Task 5:This Task is to implement any digital circuits using VSDSquadron Mini and check whether the building and uploading of C program file on RISCV processor works </b></summary>
 <h2>Implementation of 1 Bit Comparator using VSDSquadron Mini</h2>
 
 <h3><b>Overview</b></h3>
@@ -690,13 +690,13 @@ and thus displaying the outputs using LEDs.</p>
   <b>Outputs:</b>Three LEDs are connected to display the result of Comparator.<br><br>
   The GPIO pins are configured according to the Reference Mannual, ensuring the correct flow of signals between the components<br><br>
   </p>
-<img src=" "><br><br>
+<img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%205/Breadboard%20connection.jpg"><br><br>
 <h3><b>Truth Table to Verify the 1 Bit Comparator</b></h3>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <style>
+<style>
         table {
             border-collapse: collapse;
             width: 50%;
@@ -710,10 +710,7 @@ and thus displaying the outputs using LEDs.</p>
             background-color: lightgray;
         }
     </style>
-
-
-    
-    <table>
+<table>
         <tr>
             <th>A</th>
             <th>B</th>
@@ -752,7 +749,7 @@ and thus displaying the outputs using LEDs.</p>
     </table>
   <h3><b>Code:</h3>
   <pre>
-    // 1-Bit Comparator Implementation
+// 1-Bit Comparator Implementation
 
 // Included the required header files
 #include <stdio.h>
@@ -778,12 +775,12 @@ void GPIO_Config(void) {
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE); // to enable the clock for port D
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE); // to enable the clock for port C
     
-    // Input Pins Configuration
+ // Input Pins Configuration
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_2; // Pins for A and B
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // Defined as Input Type (Pull-Up)
     GPIO_Init(GPIOD, &GPIO_InitStructure);
 
-    // Output Pins Configuration
+// Output Pins Configuration
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6; // Pins for A > B, A < B, A == B
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; // Defined Output Type
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // Defined Speed
@@ -795,22 +792,22 @@ int main() {
     uint8_t A, B; // Declared the required variables
     uint8_t greater, less, equal; // Flags for comparison results
 
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
     SystemCoreClockUpdate();
     Delay_Init();
     GPIO_Config();
 
-    while(1) {
+ while(1) {
         // Read inputs from GPIO pins
         A = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1); // Read A
         B = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2); // Read B
 
-        // Comparator Logic
+ // Comparator Logic
         greater = and(A, !B); // A > B if A is 1 and B is 0
         less = and(!A, B);    // A < B if A is 0 and B is 1
         equal = and(xor(A, B), 0); // A == B if A XOR B is 0
 
-        // Output the results
+ // Output the results
         // A > B
         if(greater) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_4, SET); // Set A > B pin high
@@ -818,14 +815,14 @@ int main() {
             GPIO_WriteBit(GPIOC, GPIO_Pin_4, RESET); // Set A > B pin low
         }
 
-        // A < B
+ // A < B
         if(less) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_5, SET); // Set A < B pin high
         } else {
             GPIO_WriteBit(GPIOC, GPIO_Pin_5, RESET); // Set A < B pin low
         }
 
-        // A == B
+// A == B
         if(equal) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_6, SET); // Set A == B pin high
         } else {
