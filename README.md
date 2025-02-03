@@ -695,20 +695,7 @@ and thus displaying the outputs using LEDs.</p>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<style>
-        table {
-            border-collapse: collapse;
-            width: 50%;
-            text-align: center;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
-        th {
-            background-color: lightgray;
-        }
-</style>
+
 <table>
         <tr>
             <th>A</th>
