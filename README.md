@@ -695,7 +695,7 @@ and thus displaying the outputs using LEDs.</p>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
- <style>
+<style>
         table {
             border-collapse: collapse;
             width: 50%;
@@ -708,7 +708,7 @@ and thus displaying the outputs using LEDs.</p>
         th {
             background-color: lightgray;
         }
-    </style>
+</style>
 <table>
         <tr>
             <th>A</th>
