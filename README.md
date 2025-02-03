@@ -661,17 +661,11 @@ gtkwave iiitb_rv32i.vcd</code></pre>
     <hr>
 <!-- end of Task 4 -->
 		<!-- Task 5 -->
-<details><summary><b>Task 5</b>: This Task is to implement any digital circuits using VSDSquadron Mini and check whether the building and uploading of C program file on RISCV processor works </summary>
+<details><summary><b>Task 5</b>: Task is to implement any digital circuits using VSDSquadron Mini and check whether the building and uploading of C program file on RISCV processor works </summary>
 <h2>Implementation of 1 Bit Comparator using VSDSquadron Mini</h2>
 
 <h3><b>Overview</b></h3>
-<p>This project involves the implementation of Comparator combinational circuit using VSDSquadron Mini, a RISCV based SoC development kit. 
-A magnitude digital Comparator is a combinational circuit that compares two digital or binary numbers in order to find out whether one binary number is equal,
-less than, or greater than the other binary number. We logically design a circuit for which we will have two inputs one for A and the other for B and have three output terminals, 
-one for A > B condition, one for A = B condition, and one for A < B condition.
-This project demonstrates the practical application of digital logic and RISC-V architecture in executing operations, reflecting the process of reading 
-and writing of binary data through GPIO pins, implementing the operation of 1 Bit Comparator through digital logic gates which is simulated using PlatformIO IDE
-and thus displaying the outputs using LEDs.</p> 
+<p>This project involves the implementation of Comparator combinational circuit using VSDSquadron Mini, a RISCV based SoC development kit. A magnitude digital Comparator is a combinational circuit that compares two digital or binary numbers in order to find out whether one binary number is equal,less than, or greater than the other binary number. We logically design a circuit for which we will have two inputs one for A and the other for B and have three output terminals, one for A > B condition, one for A = B condition, and one for A < B condition.This project demonstrates the practical application of digital logic and RISC-V architecture in executing operations, reflecting the process of reading and writing of binary data through GPIO pins, implementing the operation of 1 Bit Comparator through digital logic gates which is simulated using PlatformIO IDEand thus displaying the outputs using LEDs. </p> 
 
 <h3><b>Components Required</b> </h3>
 <p> 
