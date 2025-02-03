@@ -659,4 +659,182 @@ gtkwave iiitb_rv32i.vcd</code></pre>
     <br><br>
     </details>
     <hr>
+<!-- end of Task 4 -->
+		<!-- Task 5 -->
+<details><summary><b>This Task is to implement any digital circuits using VSDSquadron Mini and check whether the building and uploading of C program file on RISCV processor works </b></summary>
+<h2>Implementation of 1 Bit Comparator using VSDSquadron Mini</h2>
 
+<h3><b>Overview</b></h3>
+<p>This project involves the implementation of Comparator combinational circuit using VSDSquadron Mini, a RISCV based SoC development kit. 
+A magnitude digital Comparator is a combinational circuit that compares two digital or binary numbers in order to find out whether one binary number is equal,
+less than, or greater than the other binary number. We logically design a circuit for which we will have two inputs one for A and the other for B and have three output terminals, 
+one for A > B condition, one for A = B condition, and one for A < B condition.
+This project demonstrates the practical application of digital logic and RISC-V architecture in executing operations, reflecting the process of reading 
+and writing of binary data through GPIO pins, implementing the operation of 1 Bit Comparator through digital logic gates which is simulated using PlatformIO IDE
+and thus displaying the outputs using LEDs.</p> 
+
+<h3><b>Components Required</b> </h3>
+<p> 
+      1. VSDSquadron Mini<br>
+      2. Push Buttons for Input of binary data<br>
+      3. 3LEDs for displaying the Output<br>
+      4. Breadboard<br>
+      5. Jumper Wires<br>
+      6. VS Code for Software Development<br>
+      7. PlatformIO multi framework professional IDE<br>
+</p>
+<h3><b>Hardware Connections</b></h3>
+<p>
+  <b>Input:</b>
+  Two inputs of single bit comparator are connected to the GPIO pins of VSDSquadron Mini via push buttons mounted on the breadboard.<br><br>
+  <b>Outputs:</b>Three LEDs are connected to display the result of Comparator.<br><br>
+  The GPIO pins are configured according to the Reference Mannual, ensuring the correct flow of signals between the components<br><br>
+  </p>
+<img src=" "><br><br>
+<h3><b>Truth Table to Verify the 1 Bit Comparator</b></h3>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: lightgray;
+        }
+    </style>
+
+
+    
+    <table>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>A &gt; B</th>
+            <th>A &lt; B</th>
+            <th>A = B</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+    </table>
+  <h3><b>Code:</h3>
+  <pre>
+    // 1-Bit Comparator Implementation
+
+// Included the required header files
+#include <stdio.h>
+#include <debug.h>
+#include <ch32v00x.h>
+
+// Defining the Logic Gate Functions 
+int and(int bit1, int bit2) {
+    return bit1 & bit2;
+}
+
+int or(int bit1, int bit2) {
+    return bit1 | bit2;
+}
+
+int xor(int bit1, int bit2) {
+    return bit1 ^ bit2;
+}
+
+// Configuring GPIO Pins
+void GPIO_Config(void) {
+    GPIO_InitTypeDef GPIO_InitStructure = {0}; // structure variable used for GPIO configuration
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE); // to enable the clock for port D
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE); // to enable the clock for port C
+    
+    // Input Pins Configuration
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_2; // Pins for A and B
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // Defined as Input Type (Pull-Up)
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+    // Output Pins Configuration
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6; // Pins for A > B, A < B, A == B
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; // Defined Output Type
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // Defined Speed
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+}
+
+// The MAIN function responsible for the execution of the program
+int main() {
+    uint8_t A, B; // Declared the required variables
+    uint8_t greater, less, equal; // Flags for comparison results
+
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+    SystemCoreClockUpdate();
+    Delay_Init();
+    GPIO_Config();
+
+    while(1) {
+        // Read inputs from GPIO pins
+        A = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1); // Read A
+        B = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2); // Read B
+
+        // Comparator Logic
+        greater = and(A, !B); // A > B if A is 1 and B is 0
+        less = and(!A, B);    // A < B if A is 0 and B is 1
+        equal = and(xor(A, B), 0); // A == B if A XOR B is 0
+
+        // Output the results
+        // A > B
+        if(greater) {
+            GPIO_WriteBit(GPIOC, GPIO_Pin_4, SET); // Set A > B pin high
+        } else {
+            GPIO_WriteBit(GPIOC, GPIO_Pin_4, RESET); // Set A > B pin low
+        }
+
+        // A < B
+        if(less) {
+            GPIO_WriteBit(GPIOC, GPIO_Pin_5, SET); // Set A < B pin high
+        } else {
+            GPIO_WriteBit(GPIOC, GPIO_Pin_5, RESET); // Set A < B pin low
+        }
+
+        // A == B
+        if(equal) {
+            GPIO_WriteBit(GPIOC, GPIO_Pin_6, SET); // Set A == B pin high
+        } else {
+            GPIO_WriteBit(GPIOC, GPIO_Pin_6, RESET); // Set A == B pin low
+        }
+    }
+    return 0;
+}
+  </pre>
+
+</details>
+<hr>
