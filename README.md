@@ -661,7 +661,7 @@ gtkwave iiitb_rv32i.vcd</code></pre>
     <hr>
 <!-- end of Task 4 -->
 		<!-- Task 5 -->
-<details><summary>Task 5:This Task is to implement any digital circuits using VSDSquadron Mini and check whether the building and uploading of C program file on RISCV processor works </b></summary>
+<details><summary><b>Task 5</b>: This Task is to implement any digital circuits using VSDSquadron Mini and check whether the building and uploading of C program file on RISCV processor works </summary>
 <h2>Implementation of 1 Bit Comparator using VSDSquadron Mini</h2>
 
 <h3><b>Overview</b></h3>
@@ -694,9 +694,8 @@ and thus displaying the outputs using LEDs.</p>
 <h3><b>Truth Table to Verify the 1 Bit Comparator</b></h3>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+ <style>
         table {
             border-collapse: collapse;
             width: 50%;
