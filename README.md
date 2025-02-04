@@ -686,10 +686,6 @@ gtkwave iiitb_rv32i.vcd</code></pre>
   </p>
 <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%205/Breadboard%20connection.jpg"><br><br>
 <h3><b>Truth Table to Verify the 1 Bit Comparator</b></h3>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-
 <table>
         <tr>
             <th>A</th>
@@ -701,30 +697,30 @@ gtkwave iiitb_rv32i.vcd</code></pre>
         <tr>
             <td>0</td>
             <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">1</td>
         </tr>
         <tr>
-            <td>0</td>
+            <td >0</td>
             <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
+            <td align="center">0</td>
+            <td align="center">1</td>
+            <td align="center">0</td>
         </tr>
         <tr>
             <td>1</td>
-            <td>1</td>
             <td>0</td>
-            <td>0</td>
+            <td align="center">1</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+        </tr>
+        <tr>
             <td>1</td>
+            <td>1</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">1</td>
         </tr>
     </table>
   <h3><b>Code:</h3>
