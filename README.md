@@ -668,15 +668,15 @@ gtkwave iiitb_rv32i.vcd</code></pre>
 <p>This project involves the implementation of Comparator combinational circuit using VSDSquadron Mini, a RISCV based SoC development kit. A magnitude digital Comparator is a combinational circuit that compares two digital or binary numbers in order to find out whether one binary number is equal,less than, or greater than the other binary number. We logically design a circuit for which we will have two inputs one for A and the other for B and have three output terminals, one for A > B condition, one for A = B condition, and one for A < B condition.This project demonstrates the practical application of digital logic and RISC-V architecture in executing operations, reflecting the process of reading and writing of binary data through GPIO pins, implementing the operation of 1 Bit Comparator through digital logic gates which is simulated using PlatformIO IDEand thus displaying the outputs using LEDs. </p> 
 
 <h3><b>Components Required</b> </h3>
-<p> 
-      1. VSDSquadron Mini<br>
-      2. Push Buttons for Input of binary data<br>
-      3. 3LEDs for displaying the Output<br>
-      4. Breadboard<br>
-      5. Jumper Wires<br>
-      6. VS Code for Software Development<br>
-      7. PlatformIO multi framework professional IDE<br>
-</p>
+	<ol type="1">
+		<li>VSDSquadron Mini</li>
+		<li>Push Buttons for Input of binary data</li>
+		<li>3LEDs for displaying the Output</li>
+		<li>Breadboard</li>
+		<li>Jumper Wires</li>
+		<li>VS Code for Software Development</li>
+		<li>PlatformIO multi framework professional IDE</li>
+	</ol>
 <h3><b>Hardware Connections</b></h3>
 <p>
   <b>Input:</b>
