@@ -738,12 +738,12 @@ void GPIO_Config(void) {
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE); // to enable the clock for port D
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE); // to enable the clock for port C
     
-    // Input Pins Configuration
+ // Input Pins Configuration
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_2; // Pins for A and B
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // Defined as Input Type (Pull-Up)
     GPIO_Init(GPIOD, &GPIO_InitStructure);
 
-    // Output Pins Configuration
+ // Output Pins Configuration
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6; // Pins for A > B, A < B, A == B
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; // Defined Output Type
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // Defined Speed
@@ -753,14 +753,14 @@ void GPIO_Config(void) {
 // The MAIN function responsible for the execution of the program
 int main() {
 
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+ NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
     SystemCoreClockUpdate();
     Delay_Init();
     GPIO_Config();
 
-    while(1) {
+ while(1) {
         
-        // Output the results
+ // Output the results
         // A > B
         if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==RESET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== SET) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_4, SET); // Set A > B pin high
@@ -768,14 +768,14 @@ int main() {
             GPIO_WriteBit(GPIOC, GPIO_Pin_4, RESET); // Set A > B pin low
         }
 
-        // A < B
+  // A < B
         if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==SET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== RESET) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_5, SET); // Set A < B pin high
         } else {
             GPIO_WriteBit(GPIOC, GPIO_Pin_5, RESET); // Set A < B pin low
         }
 
-        // A == B
+  // A == B
         if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==RESET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== RESET) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_6, SET); // Set A == B pin high
         } 
