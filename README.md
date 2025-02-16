@@ -726,55 +726,55 @@ gtkwave iiitb_rv32i.vcd</code></pre>
   <h3><b>Code:</h3>
   <pre>
 // 1-Bit Comparator Implementation
-
+<!---->
 // Included the required header files
-#include <stdio.h>
-#include <debug.h>
-#include <ch32v00x.h>
-
+#include &lt;stdio.h&gt;
+#include &lt;debug.h&gt;
+#include &lt;ch32v00x.h&gt;
+<!---->
 // Configuring GPIO Pins
 void GPIO_Config(void) {
     GPIO_InitTypeDef GPIO_InitStructure = {0}; // structure variable used for GPIO configuration
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE); // to enable the clock for port D
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE); // to enable the clock for port C
-    
+<!---->
  // Input Pins Configuration
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_2; // Pins for A and B
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // Defined as Input Type (Pull-Up)
-    GPIO_Init(GPIOD, &GPIO_InitStructure);
-
+    GPIO_Init(GPIOD, &amp;GPIO_InitStructure);
+<!---->
  // Output Pins Configuration
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6; // Pins for A > B, A < B, A == B
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6; // Pins for A &gt; B, A &lt; B, A == B
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; // Defined Output Type
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // Defined Speed
-    GPIO_Init(GPIOC, &GPIO_InitStructure);
+    GPIO_Init(GPIOC, &amp;GPIO_InitStructure);
 }
-
+<!---->
 // The MAIN function responsible for the execution of the program
 int main() {
-
+<!---->
  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
     SystemCoreClockUpdate();
     Delay_Init();
     GPIO_Config();
-
+<!---->
  while(1) {
-        
- // Output the results
-        // A > B
+<!---->       
+ // Output 
+        // A &gt; B
         if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==RESET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== SET) {
-            GPIO_WriteBit(GPIOC, GPIO_Pin_4, SET); // Set A > B pin high
+            GPIO_WriteBit(GPIOC, GPIO_Pin_4, SET); // Set A &gt; B pin high
         } else {
-            GPIO_WriteBit(GPIOC, GPIO_Pin_4, RESET); // Set A > B pin low
+            GPIO_WriteBit(GPIOC, GPIO_Pin_4, RESET); // Set A &gt; B pin low
         }
-
-  // A < B
+<!---->
+  // A &lt; B
         if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==SET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== RESET) {
-            GPIO_WriteBit(GPIOC, GPIO_Pin_5, SET); // Set A < B pin high
+            GPIO_WriteBit(GPIOC, GPIO_Pin_5, SET); // Set A &lt; B pin high
         } else {
-            GPIO_WriteBit(GPIOC, GPIO_Pin_5, RESET); // Set A < B pin low
+            GPIO_WriteBit(GPIOC, GPIO_Pin_5, RESET); // Set A &lt; B pin low
         }
-
+<!---->
   // A == B
         if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==RESET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== RESET) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_6, SET); // Set A == B pin high
@@ -784,7 +784,7 @@ int main() {
         } 
      else {
             GPIO_WriteBit(GPIOC, GPIO_Pin_6, RESET); // Set A == B pin low
-	    
+<!---->	    
  }    }
    return 0;
 }
