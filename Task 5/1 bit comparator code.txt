@@ -5,19 +5,6 @@
 #include <debug.h>
 #include <ch32v00x.h>
 
-// Defining the Logic Gate Functions 
-int and(int bit1, int bit2) {
-    return bit1 & bit2;
-}
-
-int or(int bit1, int bit2) {
-    return bit1 | bit2;
-}
-
-int xor(int bit1, int bit2) {
-    return bit1 ^ bit2;
-}
-
 // Configuring GPIO Pins
 void GPIO_Config(void) {
     GPIO_InitTypeDef GPIO_InitStructure = {0}; // structure variable used for GPIO configuration
@@ -38,8 +25,6 @@ void GPIO_Config(void) {
 
 // The MAIN function responsible for the execution of the program
 int main() {
-    uint8_t A, B; // Declared the required variables
-    uint8_t greater, less, equal; // Flags for comparison results
 
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
     SystemCoreClockUpdate();
@@ -47,34 +32,30 @@ int main() {
     GPIO_Config();
 
     while(1) {
-        // Read inputs from GPIO pins
-        A = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1); // Read A
-        B = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2); // Read B
-
-        // Comparator Logic
-        greater = and(A, !B); // A > B if A is 1 and B is 0
-        less = and(!A, B);    // A < B if A is 0 and B is 1
-        equal = and(xor(A, B), 0); // A == B if A XOR B is 0
-
+        
         // Output the results
         // A > B
-        if(greater) {
+        if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==RESET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== SET) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_4, SET); // Set A > B pin high
         } else {
             GPIO_WriteBit(GPIOC, GPIO_Pin_4, RESET); // Set A > B pin low
         }
 
         // A < B
-        if(less) {
+        if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==SET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== RESET) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_5, SET); // Set A < B pin high
         } else {
             GPIO_WriteBit(GPIOC, GPIO_Pin_5, RESET); // Set A < B pin low
         }
 
         // A == B
-        if(equal) {
+        if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==RESET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== RESET) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_6, SET); // Set A == B pin high
-        } else {
+        } 
+        else if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==SET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== SET) {
+            GPIO_WriteBit(GPIOC, GPIO_Pin_6, SET); // Set A == B pin high
+        } 
+        else {
             GPIO_WriteBit(GPIOC, GPIO_Pin_6, RESET); // Set A == B pin low
         }
     }
