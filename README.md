@@ -793,8 +793,8 @@ int main() {
 </details>
 <hr>
 <h3>Application Video:</h3>
-<a href="https://drive.google.com/file/d/1vFDIbbcA6qg7145i8_j73DAooV1d1izq/view">Comparator Implementation Video</a>
+<a href="https://drive.google.com/file/d/1vFDIbbcA6qg7145i8_j73DAooV1d1izq/view">Comparator Implementation Video</a><br>
 https://github.com/user-attachments/assets/bba29d31-00dc-49fd-a5d6-e2002e9cdebe
-<h5><b>Youtube link</b>:https://youtube.com/shorts/DEJp3M_8s1Q?si=RsefWfsXk4e1g6WX<h5></h5>
+<h4><b>Youtube link</b>:https://youtube.com/shorts/DEJp3M_8s1Q?si=RsefWfsXk4e1g6WX<h5></h5>
 <hr>
 
