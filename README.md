@@ -732,31 +732,18 @@ gtkwave iiitb_rv32i.vcd</code></pre>
 #include <debug.h>
 #include <ch32v00x.h>
 
-// Defining the Logic Gate Functions 
-int and(int bit1, int bit2) {
-    return bit1 & bit2;
-}
-
-int or(int bit1, int bit2) {
-    return bit1 | bit2;
-}
-
-int xor(int bit1, int bit2) {
-    return bit1 ^ bit2;
-}
-
 // Configuring GPIO Pins
 void GPIO_Config(void) {
     GPIO_InitTypeDef GPIO_InitStructure = {0}; // structure variable used for GPIO configuration
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE); // to enable the clock for port D
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE); // to enable the clock for port C
     
- // Input Pins Configuration
+    // Input Pins Configuration
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_2; // Pins for A and B
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // Defined as Input Type (Pull-Up)
     GPIO_Init(GPIOD, &GPIO_InitStructure);
 
-// Output Pins Configuration
+    // Output Pins Configuration
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6; // Pins for A > B, A < B, A == B
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; // Defined Output Type
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // Defined Speed
@@ -765,49 +752,47 @@ void GPIO_Config(void) {
 
 // The MAIN function responsible for the execution of the program
 int main() {
-    uint8_t A, B; // Declared the required variables
-    uint8_t greater, less, equal; // Flags for comparison results
 
-NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
     SystemCoreClockUpdate();
     Delay_Init();
     GPIO_Config();
 
- while(1) {
-        // Read inputs from GPIO pins
-        A = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1); // Read A
-        B = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2); // Read B
-
- // Comparator Logic
-        greater = and(A, !B); // A > B if A is 1 and B is 0
-        less = and(!A, B);    // A < B if A is 0 and B is 1
-        equal = and(xor(A, B), 0); // A == B if A XOR B is 0
-
- // Output the results
+    while(1) {
+        
+        // Output the results
         // A > B
-        if(greater) {
+        if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==RESET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== SET) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_4, SET); // Set A > B pin high
         } else {
             GPIO_WriteBit(GPIOC, GPIO_Pin_4, RESET); // Set A > B pin low
         }
 
- // A < B
-        if(less) {
+        // A < B
+        if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==SET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== RESET) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_5, SET); // Set A < B pin high
         } else {
             GPIO_WriteBit(GPIOC, GPIO_Pin_5, RESET); // Set A < B pin low
         }
 
-// A == B
-        if(equal) {
+        // A == B
+        if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==RESET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== RESET) {
             GPIO_WriteBit(GPIOC, GPIO_Pin_6, SET); // Set A == B pin high
-        } else {
+        } 
+        else if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1)==SET && GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_2)== SET) {
+            GPIO_WriteBit(GPIOC, GPIO_Pin_6, SET); // Set A == B pin high
+        } 
+     else {
             GPIO_WriteBit(GPIOC, GPIO_Pin_6, RESET); // Set A == B pin low
-        }
-    }
-    return 0;
+	    
+     }    }
+   return 0;
 }
   </pre>
 
 </details>
 <hr>
+<h3>Application Video:</h3>
+<a href="https://drive.google.com/file/d/1vFDIbbcA6qg7145i8_j73DAooV1d1izq/view">Comparator Implementation Video</a>
+<hr>
+
