@@ -785,7 +785,7 @@ int main() {
      else {
             GPIO_WriteBit(GPIOC, GPIO_Pin_6, RESET); // Set A == B pin low
 	    
-     }    }
+ }    }
    return 0;
 }
   </pre>
