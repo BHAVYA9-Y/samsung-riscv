@@ -669,50 +669,79 @@ gtkwave iiitb_rv32i.vcd</code></pre>
   <b>Outputs:</b>Three LEDs are connected to display the result of Comparator.<br><br>
   The GPIO pins are configured according to the Reference Mannual, ensuring the correct flow of signals between the components<br><br>
   </p>
-<img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%205/Breadboard%20connection.jpg"><br><br>
-<h3><b>Truth Table to Verify the 1 Bit Comparator</b></h3>
-<table>
+  <h3><b>Pin configuration table</b></h3>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microcontroller Pin Connections</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        th {
+            background-color: #f4b41a;
+        }
+        td {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+  <h2>Microcontroller Pin Connections</h2>
+    <table>
         <tr>
-            <th>A</th>
-            <th>B</th>
-            <th>A &gt; B</th>
-            <th>A &lt; B</th>
-            <th>A = B</th>
+            <th>Microcontroller Pin</th>
+            <th>Connected Component</th>
         </tr>
         <tr>
-            <td>0</td>
-            <td>0</td>
-            <td align="center">0</td>
-            <td align="center">0</td>
-            <td align="center">1</td>
+            <td>PC4</td>
+            <td>LED 1 (Anode)</td>
         </tr>
         <tr>
-            <td >0</td>
-            <td>1</td>
-            <td align="center">0</td>
-            <td align="center">1</td>
-            <td align="center">0</td>
+            <td>PC5</td>
+            <td>LED 2 (Anode)</td>
         </tr>
         <tr>
-            <td>1</td>
-            <td>0</td>
-            <td align="center">1</td>
-            <td align="center">0</td>
-            <td align="center">0</td>
+            <td>PC6</td>
+            <td>LED 3 (Anode)</td>
         </tr>
         <tr>
-            <td>1</td>
-            <td>1</td>
-            <td align="center">0</td>
-            <td align="center">0</td>
-            <td align="center">1</td>
+            <td>PD1</td>
+            <td>Push Button 1</td>
+        </tr>
+        <tr>
+            <td>PD2</td>
+            <td>Push Button 2</td>
+        </tr>
+        <tr>
+            <td>GND</td>
+            <td>Common Ground (LEDs, Buttons)</td>
         </tr>
     </table>
+
+</body>
+</html>
+<br>
+
+<img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%205/Breadboard%20connection.jpg"><br><br>
+
+<!--end of task 5 -->
+<!-- task 6-->
+
   <h3><b>Code:</h3>
 	  
-```c
 // 1-Bit Comparator Implementation
-
 // Included the required header files
 #include <stdio.h>
 #include <debug.h>
@@ -774,7 +803,7 @@ int main() {
  }    }
    return 0;
 }
-```
+
 
 </details>
 <hr>
