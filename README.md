@@ -718,7 +718,7 @@ gtkwave iiitb_rv32i.vcd</code></pre>
 <hr>
 
 <!--end of task 5 -->
-             <!-- task 6-->
+<!-- task 6-->
 <details><summary><b>Task 6</b>: Demonstration of application with practical implementation on Risc board and verifying it's working </summary>
 
 <h3>Working</h3>
@@ -848,8 +848,6 @@ int main() {
 <hr>
 
 
-</details>
-<hr>
 <h3>Application Video:</h3>
 
 <b>Youtube link: </b>
