@@ -612,49 +612,34 @@ gtkwave iiitb_rv32i.vcd</code></pre>
     <h3>Ouput Waveforms:</h3>
     <p>The output waveforms showing the instructions performed in a 5-stage pipelined architecture</p>
     <b><i>Instruction 1:</i></b><pre> ADD R6, R2, R1</pre>
-<p>This instruction Adds values of registers R2 and R1 and stores the result in register R6, In this case 1 + 2 = 3.</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%201-%20ADD%20R6%2CR2%2CR1.png" alt="ADD R6, R2, R1">
     <br><br><b><i>Instruction 2:</i></b><pre> SUB R7, R1, R2</pre>
-	<p>This instruction subtracts value of register R2 from R1 and stores the result in register R7, In this case 1 - 2 = -1.</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%202-%20SUB%20R7%2CR1%2CR2.png" alt="SUB R7, R1, R2">
     <br><br><b><i>Instruction 3:</i></b><pre> AND R8, R1, R3</pre>
-	<p>This instruction executes bitwise "AND" between values of registers R1 and R3 and stores the result in register R8, In this case 01 & 11 = 01(1 in decimal).</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%203-%20AND%20R8%2CR1%2CR3.png" alt="AND R8, R1, R3">
     <br><br><b><i>Instruction 4:</i></b><pre> OR R9, R2, R5</pre>
-	<p>This instruction executes bitwise "OR" between values of registers R2 and R5 and stores the result in register R9, In this case 010 | 101 = 111(7 in decimal).</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%204-%20OR%20R9%2CR2%2CR5.png" alt="OR R9, R2, R5">
     <br><br><b><i>Instruction 5:</i></b><pre> XOR R10, R1, R4</pre>
-	<p>This instruction executes bitwise XOR between values of registers R1 and R4 and stores the result in register R10, In this case 001 ^ 100 = 101(5 in decimal).</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%205-XOR%20R10%2CR1%2CR4.png" alt="XOR R10, R1, R4">
     <br><br><b><i>Instruction 6:</i></b><pre> SLT R11, R2, R4</pre>
-	<p>This instruction checks the values of registers R2 and R4 if value of R2 is less than value of R4, then register R11 is set to 1, In this case 2<4 so R11 is set to 1.</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%206-%20SLT%20R11%2CR2%2CR4.png" alt="SLT R11, R2, R4">
     <br><br><b><i>Instruction 7:</i></b><pre> ADDI R12, R4, 5</pre>
-		<p>This instruction adds the immediate data 5 to the value in register R4 and stores the result in register R12, In this case 4 + 5 = 9.</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%207-%20ADDI%20R12%2CR4%2C5.png" alt="ADDI R12, R4, 5">
     <br><br><b><i>Instruction 8:</i></b><pre> SW R3, R1, 2</pre>
-		<p>This instruction stores the register data @R1+2 into the memory, In this case 1 + 2 = 3.</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%208-%20SW%20R3%2CR1%2C2.png" alt="SW R3, R1, 2">
     <br><br><b><i>Instruction 9:</i></b><pre> LW R13, R1, 2</pre>
-		<p>This instruction loads the register data @R1+2 into the register R13, In this case 1 + 2 = 3.</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%209-%20LW%20R13%2CR1%2C2.png" alt="LW R13, R1, 2">
     <br><br><b><i>Instruction 10:</i></b><pre> BEQ R0, R0, 15</pre>
-		<p>This instruction Branches to 15 instructions ahead of current instruction if values of registers R0 equals R0, so Program Counter will be incremented by 15, In this case PC is 10 so new PC value will be 10+15=25.</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2010-BEQ%20R0%2CR0%2C15.png" alt="BEQ R0, R0, 15">
     <br><br><b><i>Instruction 11:</i></b><pre> ADD R14, R2 R2</pre>
-		<p> This instruction Adds values of registers R2 and R2 and stores the result in register R14, In this case 2 + 2 = 4.</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2011-ADD%20R14%2CR2%2CR2.png">
     <br><br><b><i>Instruction 12:</i></b><pre> BNE R0, R1, 20</pre>
-		<p>This instruction Branches to 20 instructions ahead of current instruction if values of registers R0 and R1 don't match , so Program Counter will be incremented by 20, In this case PC is 28 so new PC value will be 28+20=48.</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2012-%20BNE%20R0%2CR1%2C20.png" alt="BNE R0, R1, 20">
     <br><br><b><i>Instruction 13:</i></b><pre> ADDI R12, R4, 5</pre>
-		<p>This instruction adds the immediate data 5 to the value in register R4 and stores the result in register R12, In this case 4 + 5 = 9.</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2013-ADDI%20R12%2CR4%2C5.png" alt="ADDI R12, R4, 5">
     <br><br><b><i>Instruction 14:</i></b><pre> SLL R15, R1, R2</pre>
-		<p>This instruction shifts the value of register R1 to left by 2, (001)&lt;&lt;2=(100)4.</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2014-%20SLL%20R15%2CR1%2CR2.png" alt="SLL R15, R1, R2">
     <br><br><b><i>Instruction 15:</i></b><pre> SRL R16, R4, R2</pre>
-		<p>This instruction shifts the value of register R1 to right by 2, (100)&gt;&gt;2=(001)1.</p>
         <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%204/Instruction%2015-%20SRL%20R16%2CR4%2CR2.png" alt="SRL R16, R4, R2">
     <br><br>
     </details>
