@@ -697,8 +697,6 @@ gtkwave iiitb_rv32i.vcd</code></pre>
     </style>
 </head>
 <body>
-
-  <h2>Microcontroller Pin Connections</h2>
     <table>
         <tr>
             <th>Microcontroller Pin</th>
@@ -735,12 +733,70 @@ gtkwave iiitb_rv32i.vcd</code></pre>
 <br>
 
 <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%205/Breadboard%20connection.jpg"><br><br>
+<hr>
 
 <!--end of task 5 -->
 <!-- task 6-->
-
-  <h3><b>Code:</h3>
-	  
+<details><summary><b>Task 5</b>: Demonstration of application with practical implementation on Risc board and verifying it's working </summary>
+<h3> Circuit Diagram</h3>
+<img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%206/circuit%20diagram.png"><br><br>
+<h3>Working</h3>
+<p> 1.A 1-bit comparator is a digital circuit that compares two single-bit binary values,A and B, to determine their relationship. It generates three possible outputs: whether
+      A is greater than, equal to, or less than B.This comparison is essential in various digital applications where decision-making based on binary values is required.
+    2.The working principle of the 1-bit comparator is simple. If A is 1 and B is 0, the output indicates that A is greater than B. If both A and B are the same, whether 0 or 1, the output confirms equality. On 
+      the other hand, if A is 0 and B is 1, the comparator signals that A is less than B. These conditions are checked using basic logic gates.
+    3.The circuit implementation of a 1-bit comparator relies on AND, OR, and NOT gates to process the inputs and generate the respective outputs. It can also be designed using XNOR gates for equality checking. 
+      The simple structure allows it to be easily extended into multi-bit comparators for comparing larger binary numbers.
+</p>
+<h3>Applications</h3>
+<p>
+  1.Arithmetic and Logic Units (ALUs):Used in microprocessors and digital circuits to perform comparison operations in arithmetic and logic processing.
+  2.Data Sorting and Searching:Helps in sorting algorithms and search operations where binary values need to be compared.
+  3.Digital Control Systems:Used in automation and embedded systems for decision-making based on sensor inputs and logic conditions.
+  4.Security and Authentication Systems:Used in access control and digital locks to compare entered passwords or security codes.
+  5.Error Detection and Correction:Plays a role in error-checking mechanisms, such as parity checking and checksum verification, in digital communication.
+</p>
+<h3><b>Truth Table to Verify the 1 Bit Comparator</b></h3>
+<table>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>A &gt; B</th>
+            <th>A &lt; B</th>
+            <th>A = B</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">1</td>
+        </tr>
+        <tr>
+            <td >0</td>
+            <td>1</td>
+            <td align="center">0</td>
+            <td align="center">1</td>
+            <td align="center">0</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0</td>
+            <td align="center">1</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td align="center">0</td>
+            <td align="center">0</td>
+            <td align="center">1</td>
+        </tr>
+    </table>
+	
+ <h3><b>Code:</h3>
+	```c  
 // 1-Bit Comparator Implementation
 // Included the required header files
 #include <stdio.h>
@@ -804,7 +860,7 @@ int main() {
    return 0;
 }
 
-
+```
 </details>
 <hr>
 <h3>Application Video:</h3>
