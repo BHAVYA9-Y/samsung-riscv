@@ -11,9 +11,9 @@
 <hr>
 <!-- Task 1 -->
 <details>
-<p><summary>
+<summary>
 <b>Task 1:</b> Task is to install RISC-V toolchain using VDI link provided,Compiling the C code and Using RISV options O1 and Ofast
-</summary></p>
+</summary>
 <b>1. Install Ubuntu 18.04 LTS(beaver) on Oracle Virtual Machine Box and open VDI file provided</b>
 <br><br>
 <img src="https://github.com/BHAVYA9-Y/samsung-riscv/blob/main/Task%201/VM%20Box.png"  alt=Virtual Machine>
@@ -58,9 +58,9 @@ ls -ltr sum1ton.o
 <!-- Task 2 -->
 <!-- Spike for Sum1ton -->				
 <details>
-<p><summary>
+<summary>
 <b>Task 2:</b> Run and observe the performance of SPIKE Simulation and  under the -O1 and -Ofast Compiler optimization flags.
-</summary></p>
+</summary>
 <details>
 <p><summary>1. Sum of Integers from 1 to n</summary></p>
 <b>Debugging sum1ton.o for O1</b>
@@ -184,9 +184,9 @@ spike -d pk square.o</code></p></pre>
 <!-- Task 3 -->
 <!-- Objdump instructions-->
 <details>
-  <p><summary>
+  <summary>
     <b>Task 3:</b> 15 unique instructions are determined in the riscv-objdump of code,As it gives exact 32-bit instruction code in their respective instruction type formats.
-  </summary></p>
+  </summary>
 <!-- Task 3 -->   
 <details>
 	<p><summary>
